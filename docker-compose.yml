@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  mysql_ss:
+    image: mysql:8.0
+    container_name: mysql_ctn_ss
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: session_service_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+    networks:
+      - app_network_ss
+
+  phpmyadmin_ss:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin_ctn_ss
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      PMA_HOST: mysql_ss
+      PMA_USER: user
+      PMA_PASSWORD: password
+    depends_on:
+      - mysql_ss
+    networks:
+      - app_network_ss
+
+#volumes:
+#  mysql_data:
+
+networks:
+  app_network_ss:
+    driver: bridge
