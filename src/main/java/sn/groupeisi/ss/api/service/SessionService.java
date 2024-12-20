@@ -63,6 +63,9 @@ public class SessionService {
         return sessionRepository.findByMentorId(mentorId);
     }
 
+    public List<SessionEntity> getSessionsByStudent(Long etudiantId) {
+        return sessionRepository.findByEtudiantIdsContains(etudiantId);
+    }
 
     @Transactional
     public SessionEntity updateSession(Long sessionId, SessionEntity updatedSession) {

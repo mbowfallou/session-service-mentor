@@ -47,6 +47,11 @@ public class SessionController {
         return ResponseEntity.ok(sessionService.getSessionsByMentor(mentorId));
     }
 
+    @GetMapping("/student/{etudiantId}")
+    public ResponseEntity<List<SessionEntity>> getSessionsByStudent(@PathVariable Long etudiantId) {
+        return ResponseEntity.ok(sessionService.getSessionsByStudent(etudiantId));
+    }
+
 
     @PutMapping("/{sessionId}/update")
     public ResponseEntity<?> updateSession(@PathVariable Long sessionId, @RequestBody SessionEntity updatedSession) {

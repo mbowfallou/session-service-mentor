@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface SessionRepository extends JpaRepository<SessionEntity, Long> {
     List<SessionEntity> findByMentorId(Long mentorId);
+    List<SessionEntity> findByEtudiantIdsContains(Long etudiantId);
 }
