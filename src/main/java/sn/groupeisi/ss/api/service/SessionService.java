@@ -23,7 +23,7 @@ public class SessionService {
     public SessionService(SessionRepository sessionRepository, RestTemplate restTemplate) {
         this.sessionRepository = sessionRepository;
         this.restTemplate = restTemplate;
-        this.USER_SERVICE_URL = "http://localhost:9090/user/";
+        this.USER_SERVICE_URL = "http://USERS-SERVICE/user/";
     }
 
     /**
